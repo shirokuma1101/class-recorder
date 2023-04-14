@@ -1,0 +1,10 @@
+# OAuth 2.0 client credentials
+client_config_file: secrets/client_secrets.json
+
+# save to credentials
+save_credentials: True
+save_credentials_backend: file
+save_credentials_file: secrets/credentials.json
+
+# credentials refresh (not starting browser)
+get_refresh_token: True
