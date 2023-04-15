@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# other
+# custom
 .vscode/
 Recording_for_class/
 secrets/
