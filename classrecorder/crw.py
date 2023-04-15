@@ -42,7 +42,7 @@ class CRW(Window):
     def click_button_recordstop(self, event):
         self.switch_button_record(False)
         self.crot.stop_recording()
-        time.sleep(1)
+        time.sleep(5)
         suffix_index = self.choice_suffix.GetSelection()
         subject_index = self.choice_subject.GetSelection()
         subject = [k for i, k in enumerate(self.subjects.keys()) if i == subject_index][0]

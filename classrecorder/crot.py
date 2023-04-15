@@ -2,6 +2,7 @@
 import datetime
 import os
 import subprocess
+import time
 
 # obs
 from obswebsocket import obsws, requests
@@ -18,9 +19,10 @@ class CROT:
     def __init__(self, config: dict):
         self.config = config
 
-    def start(self) -> None:
+    def start(self, wait_sec: int = 5) -> None:
         cmd = f'start "obs" "{self.config["path"]}" --profile "{self.config["profile"]}" --minimize-to-tray'
         subprocess.Popen(cmd, shell=True)
+        time.sleep(wait_sec)
         self.client = obsws(self.config['host'], self.config['port'], self.config['password'])
         self.client.connect()
         self.client.call(requests.OpenSourceProjector(sourceName='zoom'))
