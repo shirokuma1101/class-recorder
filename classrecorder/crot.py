@@ -25,7 +25,7 @@ class CROT:
         time.sleep(wait_sec)
         self.client = obsws(self.config['host'], self.config['port'], self.config['password'])
         self.client.connect()
-        self.client.call(requests.OpenSourceProjector(sourceName='zoom'))
+        self.client.call(requests.OpenSourceProjector(sourceName=self.config['source_name']))
 
     def stop(self) -> None:
         self.client.disconnect()
