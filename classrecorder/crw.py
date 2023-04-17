@@ -46,7 +46,7 @@ class CRW(Window):
         suffix_index = self.choice_suffix.GetSelection()
         subject_index = self.choice_subject.GetSelection()
         subject = [k for i, k in enumerate(self.subjects.keys()) if i == subject_index][0]
-        file_path = f'{self.crot.SAVE_DIR}\{os.path.basename(self.crot.FILE_PATH)}_{suffix_index+1:02}_{subject}.mp4'
+        file_path = f'{self.crot.SAVE_DIR}\{os.path.splitext(os.path.basename(self.crot.FILE_PATH))[0]}_{suffix_index+1:02}_{subject}.mp4'
         os.rename(self.crot.FILE_PATH, file_path)
         self.crgd.upload(file_path, self.subjects[subject])
         os.remove(file_path)
