@@ -1,5 +1,6 @@
 # standard
 import datetime
+import json
 import os
 import subprocess
 import time
@@ -16,8 +17,11 @@ class CROT:
     SAVE_DIR = os.popen('powershell -Command ([Environment])::GetFolderPath("""MyVideos""")').read().rstrip('\n')
     FILE_PATH = fr'{SAVE_DIR}\{datetime.date.today().strftime(DATE_FORMAT)}.mp4'
 
-    def __init__(self, config: dict):
-        self.config = config
+    def __init__(self, config_path: str):
+        with open(config_path, encoding='utf-8') as f:
+            self.config = json.load(f)
+        if self.config is None:
+            raise ValueError('config is None')
 
     def start(self, wait_sec: int = 5) -> None:
         cmd = f'start "obs" "{self.config["path"]}" --profile "{self.config["profile"]}" --minimize-to-tray'

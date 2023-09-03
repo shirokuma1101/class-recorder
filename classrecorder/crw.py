@@ -18,12 +18,12 @@ class CRW(Window):
 
     # public
 
-    def __init__(self, crgd: CRGD, crot: CROT, suffix_limit: int = 5):
+    def __init__(self, config_path: str, suffix_limit: int = 5):
         self.app = wx.App()
         super().__init__(None)
 
-        self.crgd = crgd
-        self.crot = crot
+        self.crgd = CRGD()
+        self.crot = CROT(config_path)
         self.subjects = self.crot.config['subjects']
 
         self.crot.start()
